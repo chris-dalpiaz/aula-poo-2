@@ -1,11 +1,17 @@
-import java.util.ArrayList;
+package Contas;
+
+import Interface.INotificador;
 
 public abstract class Conta {
     protected String titular;
     protected Double saldo;
+    protected INotificador notificador;
 
-    public Conta(String titular) {
+    public Conta(String titular, INotificador notificador) {
         this.titular = titular;
+        //notificador é colocado no construtor por conta dele ser uma variável constante,
+        // que é alterada somente no main quando precisa
+        this.notificador = notificador;
         saldo = 0.0;
     }
 
@@ -36,4 +42,8 @@ public abstract class Conta {
     }
 
     public abstract void atualizarSaldo();
+
+    public String getTitular() {
+        return titular;
+    }
 }
